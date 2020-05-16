@@ -3,7 +3,7 @@ describe("Verifier l'adresse Email", function() {
         { value: "orpheenve@hotmail.com", resutl: true },
         { value: "a @a.com", resutl: false},
         { value: "b@", resutl: false},
-        { value: "x.com", resutl: false}
+        { value: "x.com", resutl: false},
     ];
   
     emails.forEach(email => {

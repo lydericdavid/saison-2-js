@@ -1,24 +1,59 @@
+
+alert("Donnez une adresse Email: ");
+const email = prompt("Email: ");
+const result = verifierEmail(email);
+if(result){
+    alert("L' email est correct");
+} else {
+    alert("L'email est incorrecte");
+}
+
 /**
  * Verifie si l'adresse email passé en paramettre est correcte
  * @param {String} email
  * @returns {Boolean} 
  */
 function verifierEmail(email) {
-    //1. soit email supposé être email = xxxx@yyy.zzz
-    //2. Verifier si email est de la forme xxxx@yyy
-    //3. Verifier si mail est de la form yyyy.zzz
-    //4. Verifer si email ne contient pas d'espace
+    if(hashArobaseOnMiddle(email)){
+        if(hashPointOnMiddle(email.split("@")[1])){
+            if(hasNotSpace(email)){
+                return true;
+            } else {
+                return false;
+            }
+        } 
+    } 
     return false;
 }
 
+//un tableau js
+// let a = [1, 2, 3, 45]
+// let test = a[0] --- test = 1
+
 function hashArobaseOnMiddle(str){
-    return false;
+    return hasOnMiddle(str, "@");
 }
 
 function hashPointOnMiddle(str){
-    return false;
+    return hasOnMiddle(str, ".");
 }
 
+function hasOnMiddle(str, separator){
+    const results = str.split(separator);
+    if(results.length !== 2){
+        return false;
+    }
+    if(results[0] == "" || results[1] == ""){
+        return false;
+    }
+    return true;
+}
+
+/**
+ * 
+ * @param {String} str
+ * @returns {Boolean} 
+ */
 function hasNotSpace(str){
-    return false;
+    return str.replace(" ", "") == str;
 }
